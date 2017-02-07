@@ -12,16 +12,18 @@
 		DADC8EF01E43C60200D13E89 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DADC8EEE1E43C60200D13E89 /* Main.storyboard */; };
 		DADC8EF21E43C60200D13E89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DADC8EF11E43C60200D13E89 /* Assets.xcassets */; };
 		DADC8EF51E43C60200D13E89 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DADC8EF31E43C60200D13E89 /* LaunchScreen.storyboard */; };
+		DADC8EFE1E48FBFD00D13E89 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADC8EFD1E48FBFD00D13E89 /* Meme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		DADC8EE71E43C60200D13E89 /* MemeMeSandBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemeMeSandBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DADC8EE71E43C60200D13E89 /* MemeMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemeMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DADC8EEA1E43C60200D13E89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DADC8EEC1E43C60200D13E89 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		DADC8EEF1E43C60200D13E89 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DADC8EF11E43C60200D13E89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DADC8EF41E43C60200D13E89 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DADC8EF61E43C60200D13E89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DADC8EFD1E48FBFD00D13E89 /* Meme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,7 +40,7 @@
 		DADC8EDE1E43C60200D13E89 = {
 			isa = PBXGroup;
 			children = (
-				DADC8EE91E43C60200D13E89 /* MemeMeSandBox */,
+				DADC8EE91E43C60200D13E89 /* MemeMe */,
 				DADC8EE81E43C60200D13E89 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -46,14 +48,15 @@
 		DADC8EE81E43C60200D13E89 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DADC8EE71E43C60200D13E89 /* MemeMeSandBox.app */,
+				DADC8EE71E43C60200D13E89 /* MemeMe.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		DADC8EE91E43C60200D13E89 /* MemeMeSandBox */ = {
+		DADC8EE91E43C60200D13E89 /* MemeMe */ = {
 			isa = PBXGroup;
 			children = (
+				DADC8EFC1E48FBEE00D13E89 /* Model */,
 				DADC8EEA1E43C60200D13E89 /* AppDelegate.swift */,
 				DADC8EEC1E43C60200D13E89 /* ViewController.swift */,
 				DADC8EEE1E43C60200D13E89 /* Main.storyboard */,
@@ -61,15 +64,23 @@
 				DADC8EF31E43C60200D13E89 /* LaunchScreen.storyboard */,
 				DADC8EF61E43C60200D13E89 /* Info.plist */,
 			);
-			path = MemeMeSandBox;
+			path = MemeMe;
+			sourceTree = "<group>";
+		};
+		DADC8EFC1E48FBEE00D13E89 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DADC8EFD1E48FBFD00D13E89 /* Meme.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		DADC8EE61E43C60200D13E89 /* MemeMeSandBox */ = {
+		DADC8EE61E43C60200D13E89 /* MemeMe */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DADC8EF91E43C60200D13E89 /* Build configuration list for PBXNativeTarget "MemeMeSandBox" */;
+			buildConfigurationList = DADC8EF91E43C60200D13E89 /* Build configuration list for PBXNativeTarget "MemeMe" */;
 			buildPhases = (
 				DADC8EE31E43C60200D13E89 /* Sources */,
 				DADC8EE41E43C60200D13E89 /* Frameworks */,
@@ -79,9 +90,9 @@
 			);
 			dependencies = (
 			);
-			name = MemeMeSandBox;
+			name = MemeMe;
 			productName = MemeMeSandBox;
-			productReference = DADC8EE71E43C60200D13E89 /* MemeMeSandBox.app */;
+			productReference = DADC8EE71E43C60200D13E89 /* MemeMe.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -101,7 +112,7 @@
 					};
 				};
 			};
-			buildConfigurationList = DADC8EE21E43C60200D13E89 /* Build configuration list for PBXProject "MemeMeSandBox" */;
+			buildConfigurationList = DADC8EE21E43C60200D13E89 /* Build configuration list for PBXProject "MemeMe" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -114,7 +125,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DADC8EE61E43C60200D13E89 /* MemeMeSandBox */,
+				DADC8EE61E43C60200D13E89 /* MemeMe */,
 			);
 		};
 /* End PBXProject section */
@@ -137,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DADC8EFE1E48FBFD00D13E89 /* Meme.swift in Sources */,
 				DADC8EED1E43C60200D13E89 /* ViewController.swift in Sources */,
 				DADC8EEB1E43C60200D13E89 /* AppDelegate.swift in Sources */,
 			);
@@ -262,9 +274,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = L22QFD289R;
-				INFOPLIST_FILE = MemeMeSandBox/Info.plist;
+				INFOPLIST_FILE = MemeMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.toy.dustinhowell.MemeMeSandBox;
+				PRODUCT_BUNDLE_IDENTIFIER = com.toy.dustinhowell.MemeMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -275,9 +287,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = L22QFD289R;
-				INFOPLIST_FILE = MemeMeSandBox/Info.plist;
+				INFOPLIST_FILE = MemeMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.toy.dustinhowell.MemeMeSandBox;
+				PRODUCT_BUNDLE_IDENTIFIER = com.toy.dustinhowell.MemeMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -286,7 +298,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		DADC8EE21E43C60200D13E89 /* Build configuration list for PBXProject "MemeMeSandBox" */ = {
+		DADC8EE21E43C60200D13E89 /* Build configuration list for PBXProject "MemeMe" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DADC8EF71E43C60200D13E89 /* Debug */,
@@ -295,13 +307,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DADC8EF91E43C60200D13E89 /* Build configuration list for PBXNativeTarget "MemeMeSandBox" */ = {
+		DADC8EF91E43C60200D13E89 /* Build configuration list for PBXNativeTarget "MemeMe" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DADC8EFA1E43C60200D13E89 /* Debug */,
 				DADC8EFB1E43C60200D13E89 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
