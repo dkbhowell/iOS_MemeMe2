@@ -11,13 +11,12 @@ import UIKit
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     // MARK: Outlets
-    
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var topMemeText: UITextField!
     @IBOutlet weak var bottomMemeText: UITextField!
     @IBOutlet weak var bottomToolbar: UIToolbar!
     
+    @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var nightModeToggleButton: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
@@ -27,7 +26,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     // Properties
     var nightMode = true
     
-    // Colors
+    // Colors (for night mode implementation)
     let darkBarColor = UIColor(colorLiteralRed: 56/255, green: 68/255, blue: 79/255, alpha: 1)
     let darkIconColor = UIColor(colorLiteralRed: 142/255, green: 201/255, blue: 235/255, alpha: 1)
     
@@ -38,19 +37,23 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         NSStrokeWidthAttributeName: -3.0
     ]
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        // Disable camera button if device does not have a camera
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+        
+        // setup delegates
         topMemeText.delegate = self
         bottomMemeText.delegate = self
+        
+        // setup font styles
         topMemeText.defaultTextAttributes = memeTextAttributes
         bottomMemeText.defaultTextAttributes = memeTextAttributes
         topMemeText.textAlignment = .center
         bottomMemeText.textAlignment = .center
         
-        navigationController?.navigationBar.barTintColor = darkBarColor
+        navigationController?.navigationBar.barTintColor = nightMode ? darkBarColor : darkIconColor
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -77,28 +80,22 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         pickerController.delegate = self
         pickerController.sourceType = .camera
         self.present(pickerController, animated: true, completion: nil)
-
     }
     
     @IBAction func shareMeme(_ sender: UIBarButtonItem) {
         let memeImage = generateMemedImage()
-        
         let shareController = UIActivityViewController(activityItems: [memeImage], applicationActivities: nil)
-        
         shareController.completionWithItemsHandler = {
             activity, success, items, error in
             _ = Meme(topText: self.topMemeText.text!, bottomText: self.bottomMemeText.text!, originalImage: self.imageView.image!, memedImage: memeImage)
         }
-        
         self.present(shareController, animated: true, completion: nil)
     }
     
     @IBAction func toggleNightMode(_ sender: UIBarButtonItem) {
         nightMode = !nightMode
-        
         let barColor: UIColor
         let iconColor: UIColor
-        
         if nightMode {
             barColor = darkBarColor
             iconColor = darkIconColor
@@ -106,10 +103,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             barColor = darkIconColor
             iconColor = darkBarColor
         }
-        
         navigationController?.navigationBar.barTintColor = barColor
         bottomToolbar.barTintColor = barColor
-        
         shareButton.tintColor = iconColor
         nightModeToggleButton.tintColor = iconColor
         cancelButton.tintColor = iconColor
@@ -123,30 +118,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         bottomMemeText.text = "BOTTOM"
     }
     
-    
-    
-    // Image Picker Delegate
+    // MARK: Image Picker Delegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        print("image picker picked")
-        
         if let image = info["UIImagePickerControllerOriginalImage"] as? UIImage {
             imageView.image = image
             for constraint in imageView.constraints {
                 print(constraint)
             }
         }
-        
         dismiss(animated: true, completion: nil)
         return
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        print("image picker cancel")
         dismiss(animated: true, completion: nil)
         return
     }
     
-    // Text Field Delegate
+    // MARK: Text Field Delegate
     func textFieldDidBeginEditing(_ textField: UITextField) {
         let currentText = textField.text
         if currentText == "TOP" || currentText == "BOTTOM" {
@@ -162,7 +151,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     // Notification methods
     func subscribeToKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
-        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
     }
     
@@ -179,14 +167,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func getKeyboardHeight(_ notification: Notification) -> CGFloat {
-        
         // detect if the bottom text field is being edited
         if bottomMemeText.isEditing {
             let userInfo = notification.userInfo!
             let keyboardSize = userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue
             return keyboardSize.cgRectValue.height
         }
-        
         // do not move view up if the bottom text field is not being edited
         return 0
     }
@@ -222,10 +208,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             print("No image in imageview")
             return nil
         }
-        
         let imageRatio = image.size.width / image.size.height
         let viewRatio = imageView.frame.size.width / imageView.frame.size.height
-        
         if imageRatio < viewRatio {
             let scale = imageView.frame.size.height / image.size.height
             let width = scale * image.size.width
