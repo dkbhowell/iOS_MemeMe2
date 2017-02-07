@@ -195,40 +195,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         return memedImage
     }
-    
-    func cropImageViewToImageSize(_ imageView: UIImageView) {
-        imageView.translatesAutoresizingMaskIntoConstraints = true
-        if let imageSize = getImageSize(for: imageView) {
-            imageView.frame = imageSize
-        }
-    }
-    
-    func getImageSize(for imageView: UIImageView) -> CGRect? {
-        guard let image = imageView.image else {
-            print("No image in imageview")
-            return nil
-        }
-        let imageRatio = image.size.width / image.size.height
-        let viewRatio = imageView.frame.size.width / imageView.frame.size.height
-        if imageRatio < viewRatio {
-            let scale = imageView.frame.size.height / image.size.height
-            let width = scale * image.size.width
-            let topLeftX = (imageView.frame.size.width - width) * 0.5
-            return CGRect(x: topLeftX, y: 0, width: width, height: imageView.frame.size.height)
-        } else {
-            let scale = imageView.frame.size.width / image.size.width
-            let height = scale * image.size.height
-            let topLeftY = (imageView.frame.size.height - height) * 0.5
-            return CGRect(x: 0, y: topLeftY, width: imageView.frame.size.width, height: height)
-        }
-    }
-    
-    func logDimens(for imageView: UIImageView) {
-        let width = imageView.frame.size.width
-        let height = imageView.frame.size.height
-        let dimenString = "Width: \(width) \nHeight: \(height)"
-        print(dimenString)
-    }
 }
 
 

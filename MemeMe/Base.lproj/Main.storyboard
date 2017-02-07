@@ -27,13 +27,6 @@
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hha-2D-YpN" userLabel="ContainerView">
                                 <rect key="frame" x="20" y="64" width="374" height="632"/>
                                 <subviews>
-                                    <imageView verifyAmbiguity="ignoreSizes" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_image" translatesAutoresizingMaskIntoConstraints="NO" id="7WP-hu-kSx">
-                                        <rect key="frame" x="0.0" y="66.666666666666629" width="374" height="498.66666666666674"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" secondItem="7WP-hu-kSx" secondAttribute="height" multiplier="3:4" id="CLG-QJ-ibr"/>
-                                            <constraint firstAttribute="width" relation="lessThanOrEqual" secondItem="7WP-hu-kSx" secondAttribute="height" multiplier="4:3" id="jJe-jE-mgC"/>
-                                        </constraints>
-                                    </imageView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="87K-rx-NAD" userLabel="TopMemeText">
                                         <rect key="frame" x="20" y="86.666666666666657" width="334" height="17"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
@@ -50,6 +43,13 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                                     </textField>
+                                    <imageView verifyAmbiguity="ignoreSizes" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_image" translatesAutoresizingMaskIntoConstraints="NO" id="7WP-hu-kSx">
+                                        <rect key="frame" x="0.0" y="67" width="374" height="498.66666666666674"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" secondItem="7WP-hu-kSx" secondAttribute="height" multiplier="3:4" id="CLG-QJ-ibr"/>
+                                            <constraint firstAttribute="width" relation="lessThanOrEqual" secondItem="7WP-hu-kSx" secondAttribute="height" multiplier="4:3" id="jJe-jE-mgC"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
