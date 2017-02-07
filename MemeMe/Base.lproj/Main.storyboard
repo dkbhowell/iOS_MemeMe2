@@ -14,7 +14,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MemeMeSandBox" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -64,7 +64,7 @@
                                     <constraint firstItem="7WP-hu-kSx" firstAttribute="centerX" secondItem="Hha-2D-YpN" secondAttribute="centerX" id="zz9-Zi-AUo"/>
                                 </constraints>
                             </view>
-                            <toolbar autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sLp-bb-rW3">
+                            <toolbar autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sLp-bb-rW3">
                                 <rect key="frame" x="0.0" y="696" width="414" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="ye0-nd-eXZ"/>
@@ -84,6 +84,8 @@
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="s26-Ke-KJp"/>
                                 </items>
+                                <color key="tintColor" red="0.55686277151107788" green="0.78823530673980713" blue="0.92156863212585449" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="barTintColor" red="0.21960784494876862" green="0.26666668057441711" blue="0.30980393290519714" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -99,11 +101,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="GIP-Q1-1W6">
                         <barButtonItem key="leftBarButtonItem" systemItem="action" id="2lB-Kj-26c">
+                            <color key="tintColor" red="0.55686277149999996" green="0.78823530669999997" blue="0.92156863209999995" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="shareMeme:" destination="BYZ-38-t0r" id="6iD-M0-12L"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="Bmf-2f-U05">
+                            <color key="tintColor" red="0.55686277149999996" green="0.78823530669999997" blue="0.92156863209999995" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="resetUI:" destination="BYZ-38-t0r" id="ufu-KD-NI1"/>
                             </connections>

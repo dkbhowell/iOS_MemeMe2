@@ -38,6 +38,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         bottomMemeText.defaultTextAttributes = memeTextAttributes
         topMemeText.textAlignment = .center
         bottomMemeText.textAlignment = .center
+        
+        navigationController?.navigationBar.barTintColor = UIColor(colorLiteralRed: 56/255, green: 68/255, blue: 79/255, alpha: 1)
     }
     
     override func viewWillAppear(_ animated: Bool) {
