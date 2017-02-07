@@ -18,7 +18,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var bottomMemeText: UITextField!
     @IBOutlet weak var bottomToolbar: UIToolbar!
     
+    @IBOutlet weak var shareButton: UIBarButtonItem!
+    @IBOutlet weak var nightModeToggleButton: UIBarButtonItem!
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
+    @IBOutlet weak var albumButton: UIBarButtonItem!
     
+    
+    // Properties
+    var nightMode = true
+    
+    // Colors
+    let darkBarColor = UIColor(colorLiteralRed: 56/255, green: 68/255, blue: 79/255, alpha: 1)
+    let darkIconColor = UIColor(colorLiteralRed: 142/255, green: 201/255, blue: 235/255, alpha: 1)
     
     let memeTextAttributes: [String:Any] = [
         NSStrokeColorAttributeName: UIColor.black,
@@ -39,7 +50,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         topMemeText.textAlignment = .center
         bottomMemeText.textAlignment = .center
         
-        navigationController?.navigationBar.barTintColor = UIColor(colorLiteralRed: 56/255, green: 68/255, blue: 79/255, alpha: 1)
+        navigationController?.navigationBar.barTintColor = darkBarColor
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -80,6 +91,30 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         
         self.present(shareController, animated: true, completion: nil)
+    }
+    
+    @IBAction func toggleNightMode(_ sender: UIBarButtonItem) {
+        nightMode = !nightMode
+        
+        let barColor: UIColor
+        let iconColor: UIColor
+        
+        if nightMode {
+            barColor = darkBarColor
+            iconColor = darkIconColor
+        } else {
+            barColor = darkIconColor
+            iconColor = darkBarColor
+        }
+        
+        navigationController?.navigationBar.barTintColor = barColor
+        bottomToolbar.barTintColor = barColor
+        
+        shareButton.tintColor = iconColor
+        nightModeToggleButton.tintColor = iconColor
+        cancelButton.tintColor = iconColor
+        cameraButton.tintColor = iconColor
+        albumButton.tintColor = iconColor
     }
     
     @IBAction func resetUI(_ sender: UIBarButtonItem) {
