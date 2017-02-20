@@ -14,9 +14,12 @@ class MemeCollectionViewController: UICollectionViewController {
     
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
-    
     var memes: [Meme] = [Meme]()
-
+    
+    let layoutPadding: CGFloat = 3.0
+    let minItemSize: CGFloat = 100
+    let maxItemsPerRow: CGFloat = 10
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,6 +34,8 @@ class MemeCollectionViewController: UICollectionViewController {
             // restore background default?
             collectionView?.backgroundView = nil
         }
+        
+        setLayout(forSize: self.view.frame.size)
 
     }
 
@@ -53,7 +58,11 @@ class MemeCollectionViewController: UICollectionViewController {
         memes.append(fifthMeme)
         memes.append(sixthMeme)
         
-        return memes  //[Meme]()
+        return memes
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        setLayout(forSize: size)
     }
 
     /*
@@ -86,6 +95,25 @@ class MemeCollectionViewController: UICollectionViewController {
         cell.memeImage.image = memeForCell.memedImage
     
         return cell
+    }
+    
+    func setLayout(forSize size: CGSize) {
+        let itemSize = getItemDimensions(forContainerSize: size, spacing: layoutPadding, minDimensSize: minItemSize)
+        flowLayout.minimumInteritemSpacing = layoutPadding
+        flowLayout.minimumLineSpacing = layoutPadding
+        flowLayout.itemSize = itemSize
+    }
+    
+    func getItemDimensions(forContainerSize size: CGSize, spacing: CGFloat, minDimensSize: CGFloat) -> CGSize {
+        var itemsPerRow: CGFloat = CGFloat(maxItemsPerRow)
+        let containerWidth = size.width
+        
+        while (containerWidth - (itemsPerRow - 1) * spacing) / itemsPerRow < minDimensSize {
+            itemsPerRow -= 1
+        }
+        
+        let dimens = (containerWidth - (itemsPerRow - 1) * spacing) / itemsPerRow
+        return CGSize(width: dimens, height: dimens)
     }
 
     // MARK: UICollectionViewDelegate
