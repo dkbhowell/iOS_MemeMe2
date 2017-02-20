@@ -44,10 +44,11 @@ class MemeCollectionViewController: UICollectionViewController {
         // dummy memes
         var memes = [Meme]()
         let image = UIImage(named: "cooper_bone")!
+        let image2 = UIImage(named: "dog_nutrition")!
         let firstMeme = Meme(topText: "YOYOYO", bottomText: "SUPBRO", originalImage: image, memedImage: image)
-        let secondMeme = firstMeme
+        let secondMeme = Meme(topText: "BALH", bottomText: "TESTING", originalImage: image2, memedImage: image2)
         let thirdMeme = firstMeme
-        let fourthMeme = firstMeme
+        let fourthMeme = secondMeme
         let fifthMeme = firstMeme
         let sixthMeme = firstMeme
         
@@ -117,6 +118,15 @@ class MemeCollectionViewController: UICollectionViewController {
     }
 
     // MARK: UICollectionViewDelegate
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedMeme = memes[indexPath.row]
+        
+        let detailController = self.storyboard?.instantiateViewController(withIdentifier: "memeDetailController") as! MemeDetailViewController
+        detailController.image = selectedMeme.memedImage
+        
+        navigationController?.pushViewController(detailController, animated: true)
+    }
 
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
