@@ -12,6 +12,21 @@ class MemeTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let memes = fetchSavedMemes()
+
+        if memes.count == 0 {
+            // Set background of Table View to stock image and hide separators
+            print("Saved Meme Count is 0")
+            let image = UIImage(named: "NoSavedMemes")
+            let imageView = UIImageView(image: image)
+            tableView.backgroundView = imageView
+            tableView.separatorColor = UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 0)
+        } else {
+            // Restore Defaults??
+            tableView.backgroundView = nil
+            tableView.separatorColor = nil
+        }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -23,6 +38,10 @@ class MemeTableViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    private func fetchSavedMemes() -> [Meme] {
+        return [Meme]()
     }
 
     // MARK: - Table view data source

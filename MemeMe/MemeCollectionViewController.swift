@@ -14,6 +14,19 @@ class MemeCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let memes = fetchSavedMemes()
+
+        if memes.count == 0 {
+            // set stock background
+            print("Saved Meme count is 0")
+            let image = UIImage(named: "NoSavedMemes")
+            let imageView = UIImageView(image: image)
+            collectionView?.backgroundView = imageView
+        } else {
+            // restore background default?
+            collectionView?.backgroundView = nil
+        }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -27,6 +40,10 @@ class MemeCollectionViewController: UICollectionViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    private func fetchSavedMemes() -> [Meme] {
+        return [Meme]()
     }
 
     /*

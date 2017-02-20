@@ -138,10 +138,10 @@
             </objects>
             <point key="canvasLocation" x="1043.4782608695652" y="138.58695652173915"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Saved Memes Table-->
         <scene sceneID="drI-7n-Nn9">
             <objects>
-                <tableViewController id="KBG-hQ-IAp" customClass="MemeTableViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Saved Memes Table" id="KBG-hQ-IAp" customClass="MemeTableViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ab6-uz-0iD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -161,17 +161,19 @@
                             <outlet property="delegate" destination="KBG-hQ-IAp" id="anU-X9-U5b"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="XR3-qR-LYh"/>
+                    <navigationItem key="navigationItem" title="Saved Memes" id="XR3-qR-LYh"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jb8-V7-pCz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1325" y="898"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--SM-->
         <scene sceneID="743-dn-Sm5">
             <objects>
-                <navigationController id="MtG-b2-eYN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="table" selectedImage="table" id="e5C-Cw-Lac"/>
+                <navigationController title="SM" id="MtG-b2-eYN" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="table" selectedImage="table" id="e5C-Cw-Lac">
+                        <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="-7"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="6Pj-rq-WtQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -184,11 +186,13 @@
             </objects>
             <point key="canvasLocation" x="565" y="898"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--SMC-->
         <scene sceneID="mxV-Rd-QXy">
             <objects>
-                <navigationController id="pxt-my-gtF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="collection" id="g9D-E2-lqU"/>
+                <navigationController title="SMC" id="pxt-my-gtF" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="collection" id="g9D-E2-lqU">
+                        <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="-7"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Lnw-EM-apJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -201,10 +205,10 @@
             </objects>
             <point key="canvasLocation" x="564" y="1552"/>
         </scene>
-        <!--Meme Collection View Controller-->
+        <!--Saved Memes Collection-->
         <scene sceneID="4Iy-tb-hxw">
             <objects>
-                <collectionViewController id="Axb-kl-ziH" customClass="MemeCollectionViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController title="Saved Memes Collection" id="Axb-kl-ziH" customClass="MemeCollectionViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="0Gs-o4-dVb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -230,7 +234,7 @@
                             <outlet property="delegate" destination="Axb-kl-ziH" id="cUZ-vi-81I"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="NJG-p1-cIz"/>
+                    <navigationItem key="navigationItem" title="Saved Memes" id="NJG-p1-cIz"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hb7-iZ-XlV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
