@@ -220,13 +220,27 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="4lr-Og-sYX">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="memeCollectionCell" id="4lr-Og-sYX" customClass="MemeCollectionViewCell" customModule="MemeMe" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cooper_bone" translatesAutoresizingMaskIntoConstraints="NO" id="F9N-y3-JlI">
+                                            <rect key="frame" x="8" y="8" width="34" height="34"/>
+                                        </imageView>
+                                    </subviews>
                                 </view>
+                                <constraints>
+                                    <constraint firstAttribute="topMargin" secondItem="F9N-y3-JlI" secondAttribute="top" id="Dxe-UO-AIL"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="F9N-y3-JlI" secondAttribute="bottom" id="E0t-Uh-feK"/>
+                                    <constraint firstAttribute="leadingMargin" secondItem="F9N-y3-JlI" secondAttribute="leading" id="rea-5l-Yce"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="F9N-y3-JlI" secondAttribute="trailing" id="vSc-hr-Lef"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="memeImage" destination="F9N-y3-JlI" id="cfz-7Q-G0d"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -235,10 +249,13 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Saved Memes" id="NJG-p1-cIz"/>
+                    <connections>
+                        <outlet property="flowLayout" destination="iWT-aY-fd8" id="5Mn-jC-Z8h"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hb7-iZ-XlV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1325" y="1552"/>
+            <point key="canvasLocation" x="1324.6376811594205" y="1551.358695652174"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Weo-Yo-RLc">
@@ -281,6 +298,7 @@
     </scenes>
     <resources>
         <image name="collection" width="29" height="30"/>
+        <image name="cooper_bone" width="2016" height="1512"/>
         <image name="default_image" width="1242" height="2208"/>
         <image name="sun_icon" width="33" height="33"/>
         <image name="table" width="30" height="30"/>

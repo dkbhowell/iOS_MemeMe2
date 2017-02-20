@@ -8,18 +8,22 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+private let reuseIdentifier = "memeCollectionCell"
 
 class MemeCollectionViewController: UICollectionViewController {
+    
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+    
+    
+    var memes: [Meme] = [Meme]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let memes = fetchSavedMemes()
+        memes = fetchSavedMemes()
 
+        // Add Custom Background if there are no memes to display
         if memes.count == 0 {
-            // set stock background
-            print("Saved Meme count is 0")
             let image = UIImage(named: "NoSavedMemes")
             let imageView = UIImageView(image: image)
             collectionView?.backgroundView = imageView
@@ -28,22 +32,28 @@ class MemeCollectionViewController: UICollectionViewController {
             collectionView?.backgroundView = nil
         }
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     private func fetchSavedMemes() -> [Meme] {
-        return [Meme]()
+        
+        // dummy memes
+        var memes = [Meme]()
+        let image = UIImage(named: "cooper_bone")!
+        let firstMeme = Meme(topText: "YOYOYO", bottomText: "SUPBRO", originalImage: image, memedImage: image)
+        let secondMeme = firstMeme
+        let thirdMeme = firstMeme
+        let fourthMeme = firstMeme
+        let fifthMeme = firstMeme
+        let sixthMeme = firstMeme
+        
+        memes.append(firstMeme)
+        memes.append(secondMeme)
+        memes.append(thirdMeme)
+        memes.append(fourthMeme)
+        memes.append(fifthMeme)
+        memes.append(sixthMeme)
+        
+        return memes  //[Meme]()
     }
 
     /*
@@ -59,20 +69,21 @@ class MemeCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
+        return memes.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MemeCollectionViewCell
+        
+        let memeForCell = memes[indexPath.row]
     
         // Configure the cell
+        cell.memeImage.image = memeForCell.memedImage
     
         return cell
     }
