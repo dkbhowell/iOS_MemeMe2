@@ -123,7 +123,7 @@ class MemeCollectionViewController: UICollectionViewController {
         let selectedMeme = memes[indexPath.row]
         
         let detailController = self.storyboard?.instantiateViewController(withIdentifier: "memeDetailController") as! MemeDetailViewController
-        detailController.image = selectedMeme.memedImage
+        detailController.meme = selectedMeme
         
         navigationController?.pushViewController(detailController, animated: true)
     }

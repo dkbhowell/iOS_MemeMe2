@@ -147,12 +147,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="b7y-E0-YME">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="memeTableCell" textLabel="bZV-a3-9wT" detailTextLabel="DHH-zB-SIu" style="IBUITableViewCellStyleSubtitle" id="b7y-E0-YME">
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b7y-E0-YME" id="TK2-8S-zkS">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bZV-a3-9wT">
+                                            <rect key="frame" x="15" y="4" width="34" height="21"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DHH-zB-SIu">
+                                            <rect key="frame" x="15" y="25" width="33" height="15"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -199,10 +215,10 @@
             </objects>
             <point key="canvasLocation" x="2109" y="1180"/>
         </scene>
-        <!--SM-->
+        <!--Table Nav-->
         <scene sceneID="743-dn-Sm5">
             <objects>
-                <navigationController title="SM" id="MtG-b2-eYN" sceneMemberID="viewController">
+                <navigationController title="Table Nav" id="MtG-b2-eYN" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="table" selectedImage="table" id="e5C-Cw-Lac">
                         <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="-7"/>
                     </tabBarItem>
@@ -218,10 +234,10 @@
             </objects>
             <point key="canvasLocation" x="565" y="898"/>
         </scene>
-        <!--SMC-->
+        <!--Collection Nav-->
         <scene sceneID="mxV-Rd-QXy">
             <objects>
-                <navigationController title="SMC" id="pxt-my-gtF" sceneMemberID="viewController">
+                <navigationController title="Collection Nav" id="pxt-my-gtF" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="collection" id="g9D-E2-lqU">
                         <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="-7"/>
                     </tabBarItem>
@@ -310,7 +326,8 @@
         <!--Navigation Controller-->
         <scene sceneID="vR3-kf-HZM">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GD6-q6-IVS" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V9e-Df-v29" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController storyboardIdentifier="createMemeNav" automaticallyAdjustsScrollViewInsets="NO" id="GD6-q6-IVS" sceneMemberID="viewController">
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="736"/>
@@ -323,7 +340,6 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="j6C-rl-QZc"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="V9e-Df-v29" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.23188405797103" y="138.58695652173915"/>
         </scene>

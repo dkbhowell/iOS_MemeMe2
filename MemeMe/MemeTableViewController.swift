@@ -9,11 +9,13 @@
 import UIKit
 
 class MemeTableViewController: UITableViewController {
+    
+    var memes = [Meme]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let memes = fetchSavedMemes()
+        memes = fetchSavedMemes()
 
         if memes.count == 0 {
             // Set background of Table View to stock image and hide separators
@@ -41,30 +43,60 @@ class MemeTableViewController: UITableViewController {
     }
 
     private func fetchSavedMemes() -> [Meme] {
-        return [Meme]()
+        
+        // dummy memes
+        var memes = [Meme]()
+        let image = UIImage(named: "cooper_bone")!
+        let image2 = UIImage(named: "dog_nutrition")!
+        let firstMeme = Meme(topText: "YOYOYO", bottomText: "SUPBRO", originalImage: image, memedImage: image)
+        let secondMeme = Meme(topText: "BALH", bottomText: "TESTING", originalImage: image2, memedImage: image2)
+        let thirdMeme = firstMeme
+        let fourthMeme = secondMeme
+        let fifthMeme = firstMeme
+        let sixthMeme = firstMeme
+        
+        memes.append(firstMeme)
+        memes.append(secondMeme)
+        memes.append(thirdMeme)
+        memes.append(fourthMeme)
+        memes.append(fifthMeme)
+        memes.append(sixthMeme)
+        
+        return memes
     }
+
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return memes.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "memeTableCell", for: indexPath)
 
-        // Configure the cell...
+        let meme = memes[indexPath.row]
+        
+        cell.imageView?.image = meme.memedImage
+        cell.textLabel?.text = meme.topText
+        cell.detailTextLabel?.text = meme.bottomText
 
         return cell
     }
-    */
+    
+    // MARK: Table View Delegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let meme = memes[indexPath.row]
+        
+        let detailController = self.storyboard?.instantiateViewController(withIdentifier: "memeDetailController") as! MemeDetailViewController
+        detailController.meme = meme
+        navigationController?.pushViewController(detailController, animated: true)
+    }
 
     /*
     // Override to support conditional editing of the table view.

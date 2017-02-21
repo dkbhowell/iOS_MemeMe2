@@ -12,13 +12,13 @@ class MemeDetailViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
     
-    var image: UIImage!
+    var meme: Meme!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        imageView.image = image
+        imageView.image = meme.memedImage
     }
 
     override func didReceiveMemoryWarning() {
