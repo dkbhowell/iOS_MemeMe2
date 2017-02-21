@@ -136,7 +136,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1043.4782608695652" y="138.58695652173915"/>
+            <point key="canvasLocation" x="2912" y="350"/>
         </scene>
         <!--Saved Memes Table-->
         <scene sceneID="drI-7n-Nn9">
@@ -177,7 +177,13 @@
                             <outlet property="delegate" destination="KBG-hQ-IAp" id="anU-X9-U5b"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Saved Memes" id="XR3-qR-LYh"/>
+                    <navigationItem key="navigationItem" title="Saved Memes" id="XR3-qR-LYh">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Mlc-4b-KUF">
+                            <connections>
+                                <segue destination="GD6-q6-IVS" kind="presentation" id="Fy8-en-L1i"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jb8-V7-pCz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -257,7 +263,7 @@
         <scene sceneID="4Iy-tb-hxw">
             <objects>
                 <collectionViewController title="Saved Memes Collection" id="Axb-kl-ziH" customClass="MemeCollectionViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="0Gs-o4-dVb">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="0Gs-o4-dVb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -296,7 +302,13 @@
                             <outlet property="delegate" destination="Axb-kl-ziH" id="cUZ-vi-81I"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Saved Memes" id="NJG-p1-cIz"/>
+                    <navigationItem key="navigationItem" title="Saved Memes" id="NJG-p1-cIz">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="E1z-40-UiV">
+                            <connections>
+                                <segue destination="GD6-q6-IVS" kind="presentation" id="OFd-GN-QcA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="flowLayout" destination="iWT-aY-fd8" id="5Mn-jC-Z8h"/>
                     </connections>
@@ -341,7 +353,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="136.23188405797103" y="138.58695652173915"/>
+            <point key="canvasLocation" x="2178" y="350"/>
         </scene>
     </scenes>
     <resources>
@@ -352,4 +364,7 @@
         <image name="sun_icon" width="33" height="33"/>
         <image name="table" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="OFd-GN-QcA"/>
+    </inferredMetricsTieBreakers>
 </document>
