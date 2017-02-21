@@ -24,7 +24,15 @@ class MemeCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         
         memes = fetchSavedMemes()
+        
+        setLayout(forSize: self.view.frame.size)
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("CollectionView ViewWillAppear")
+        memes = fetchSavedMemes()
+        
         // Add Custom Background if there are no memes to display
         if memes.count == 0 {
             let image = UIImage(named: "NoSavedMemes")
@@ -35,31 +43,13 @@ class MemeCollectionViewController: UICollectionViewController {
             collectionView?.backgroundView = nil
         }
         
-        setLayout(forSize: self.view.frame.size)
-
+        // refresh data
+        collectionView?.reloadData()
     }
 
     private func fetchSavedMemes() -> [Meme] {
         
-        // dummy memes
-        var memes = [Meme]()
-        let image = UIImage(named: "cooper_bone")!
-        let image2 = UIImage(named: "dog_nutrition")!
-        let firstMeme = Meme(topText: "YOYOYO", bottomText: "SUPBRO", originalImage: image, memedImage: image)
-        let secondMeme = Meme(topText: "BALH", bottomText: "TESTING", originalImage: image2, memedImage: image2)
-        let thirdMeme = firstMeme
-        let fourthMeme = secondMeme
-        let fifthMeme = firstMeme
-        let sixthMeme = firstMeme
-        
-        memes.append(firstMeme)
-        memes.append(secondMeme)
-        memes.append(thirdMeme)
-        memes.append(fourthMeme)
-        memes.append(fifthMeme)
-        memes.append(sixthMeme)
-        
-        return memes
+        return (UIApplication.shared.delegate as! AppDelegate).memes
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

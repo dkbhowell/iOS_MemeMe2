@@ -87,9 +87,18 @@ class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegat
         let shareController = UIActivityViewController(activityItems: [memeImage], applicationActivities: nil)
         shareController.completionWithItemsHandler = {
             activity, success, items, error in
-            _ = Meme(topText: self.topMemeText.text!, bottomText: self.bottomMemeText.text!, originalImage: self.imageView.image!, memedImage: memeImage)
+            let meme = Meme(topText: self.topMemeText.text!, bottomText: self.bottomMemeText.text!, originalImage: self.imageView.image!, memedImage: memeImage)
+            (UIApplication.shared.delegate as! AppDelegate).memes.append(meme)
+            print("Meme Added to Model")
+            self.dismiss(animated: true) {
+                print("dismiss handler of shareController")
+//                self.viewWillAppear(true)
+            }
         }
-        self.present(shareController, animated: true, completion: nil)
+        self.present(shareController, animated: true) {
+            print("completion handler of present method")
+//            self.viewWillAppear(true)
+        }
     }
     
     @IBAction func toggleNightMode(_ sender: UIBarButtonItem) {
@@ -113,9 +122,7 @@ class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     @IBAction func resetUI(_ sender: UIBarButtonItem) {
-        imageView.image = UIImage(named: "default_image")
-        topMemeText.text = "TOP"
-        bottomMemeText.text = "BOTTOM"
+        dismiss(animated: true, completion: nil)
     }
     
     // MARK: Image Picker Delegate

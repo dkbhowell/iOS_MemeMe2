@@ -13,10 +13,22 @@ class MemeTableViewController: UITableViewController {
     var memes = [Meme]()
 
     override func viewDidLoad() {
+        print("TableView viewDidLoad")
         super.viewDidLoad()
         
         memes = fetchSavedMemes()
 
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("TableView viewWillAppear")
+        memes = fetchSavedMemes()
+        
         if memes.count == 0 {
             // Set background of Table View to stock image and hide separators
             print("Saved Meme Count is 0")
@@ -29,12 +41,8 @@ class MemeTableViewController: UITableViewController {
             tableView.backgroundView = nil
             tableView.separatorColor = nil
         }
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,26 +51,7 @@ class MemeTableViewController: UITableViewController {
     }
 
     private func fetchSavedMemes() -> [Meme] {
-        
-        // dummy memes
-        var memes = [Meme]()
-        let image = UIImage(named: "cooper_bone")!
-        let image2 = UIImage(named: "dog_nutrition")!
-        let firstMeme = Meme(topText: "YOYOYO", bottomText: "SUPBRO", originalImage: image, memedImage: image)
-        let secondMeme = Meme(topText: "BALH", bottomText: "TESTING", originalImage: image2, memedImage: image2)
-        let thirdMeme = firstMeme
-        let fourthMeme = secondMeme
-        let fifthMeme = firstMeme
-        let sixthMeme = firstMeme
-        
-        memes.append(firstMeme)
-        memes.append(secondMeme)
-        memes.append(thirdMeme)
-        memes.append(fourthMeme)
-        memes.append(fifthMeme)
-        memes.append(sixthMeme)
-        
-        return memes
+        return (UIApplication.shared.delegate as! AppDelegate).memes
     }
 
 

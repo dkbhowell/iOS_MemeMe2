@@ -136,7 +136,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2912" y="350"/>
+            <point key="canvasLocation" x="2997" y="724"/>
         </scene>
         <!--Saved Memes Table-->
         <scene sceneID="drI-7n-Nn9">
@@ -219,7 +219,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OJ3-Ei-tZW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2109" y="1180"/>
+            <point key="canvasLocation" x="2630" y="1437"/>
         </scene>
         <!--Table Nav-->
         <scene sceneID="743-dn-Sm5">
@@ -353,7 +353,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="2178" y="350"/>
+            <point key="canvasLocation" x="2261" y="724"/>
         </scene>
     </scenes>
     <resources>
@@ -365,6 +365,6 @@
         <image name="table" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="OFd-GN-QcA"/>
+        <segue reference="Fy8-en-L1i"/>
     </inferredMetricsTieBreakers>
 </document>
