@@ -22,51 +22,63 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Okp-iX-XbU">
-                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3oI-oc-tZl" userLabel="Meme View">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZsC-Mq-Caj" userLabel="Container View">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="632"/>
                                         <subviews>
-                                            <imageView verifyAmbiguity="ignoreSizes" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_image" translatesAutoresizingMaskIntoConstraints="NO" id="7WP-hu-kSx">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="632"/>
+                                            <view contentMode="scaleToFill" horizontalHuggingPriority="400" verticalHuggingPriority="400" translatesAutoresizingMaskIntoConstraints="NO" id="3oI-oc-tZl" userLabel="Meme View">
+                                                <rect key="frame" x="0.0" y="40" width="414" height="552"/>
+                                                <subviews>
+                                                    <imageView verifyAmbiguity="ignoreSizes" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cooper_bone" translatesAutoresizingMaskIntoConstraints="NO" id="7WP-hu-kSx">
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="552"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" secondItem="7WP-hu-kSx" secondAttribute="height" multiplier="3:4" id="CLG-QJ-ibr"/>
+                                                            <constraint firstAttribute="width" relation="lessThanOrEqual" secondItem="7WP-hu-kSx" secondAttribute="height" multiplier="4:3" id="jJe-jE-mgC"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="87K-rx-NAD" userLabel="TopMemeText">
+                                                        <rect key="frame" x="41.5" y="32" width="331" height="17"/>
+                                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                                        <color key="tintColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                                                    </textField>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xeC-Th-hX7" userLabel="BottomMemeText">
+                                                        <rect key="frame" x="41.5" y="503" width="331" height="17"/>
+                                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                                        <color key="tintColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                                                    </textField>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" secondItem="7WP-hu-kSx" secondAttribute="height" multiplier="5:8" id="CLG-QJ-ibr"/>
-                                                    <constraint firstAttribute="width" relation="lessThanOrEqual" secondItem="7WP-hu-kSx" secondAttribute="height" multiplier="3:2" id="jJe-jE-mgC"/>
+                                                    <constraint firstItem="7WP-hu-kSx" firstAttribute="centerX" secondItem="3oI-oc-tZl" secondAttribute="centerX" id="5re-am-xcZ"/>
+                                                    <constraint firstItem="7WP-hu-kSx" firstAttribute="width" secondItem="3oI-oc-tZl" secondAttribute="width" id="72w-Rj-ZsG"/>
+                                                    <constraint firstItem="87K-rx-NAD" firstAttribute="centerX" secondItem="7WP-hu-kSx" secondAttribute="centerX" id="Hkc-by-srP"/>
+                                                    <constraint firstItem="xeC-Th-hX7" firstAttribute="centerX" secondItem="7WP-hu-kSx" secondAttribute="centerX" id="VzG-6K-jFf"/>
+                                                    <constraint firstItem="87K-rx-NAD" firstAttribute="width" secondItem="7WP-hu-kSx" secondAttribute="width" multiplier="0.8" id="XKb-Zx-5vt"/>
+                                                    <constraint firstItem="7WP-hu-kSx" firstAttribute="centerY" secondItem="3oI-oc-tZl" secondAttribute="centerY" id="cfL-Jr-lba"/>
+                                                    <constraint firstItem="7WP-hu-kSx" firstAttribute="bottom" secondItem="xeC-Th-hX7" secondAttribute="bottom" constant="32" id="gOF-L7-1AE"/>
+                                                    <constraint firstItem="87K-rx-NAD" firstAttribute="top" secondItem="7WP-hu-kSx" secondAttribute="top" constant="32" id="oN0-wB-YtB"/>
+                                                    <constraint firstItem="xeC-Th-hX7" firstAttribute="width" secondItem="7WP-hu-kSx" secondAttribute="width" multiplier="0.8" id="s5h-g8-ZS2"/>
+                                                    <constraint firstItem="7WP-hu-kSx" firstAttribute="height" secondItem="3oI-oc-tZl" secondAttribute="height" id="tXP-2u-UxD"/>
                                                 </constraints>
-                                            </imageView>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="87K-rx-NAD" userLabel="TopMemeText">
-                                                <rect key="frame" x="41.5" y="32" width="331" height="17"/>
-                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
-                                                <color key="tintColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
-                                            </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xeC-Th-hX7" userLabel="BottomMemeText">
-                                                <rect key="frame" x="41.5" y="583" width="331" height="17"/>
-                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
-                                                <color key="tintColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
-                                            </textField>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="7WP-hu-kSx" firstAttribute="centerX" secondItem="3oI-oc-tZl" secondAttribute="centerX" id="5re-am-xcZ"/>
-                                            <constraint firstItem="7WP-hu-kSx" firstAttribute="width" relation="lessThanOrEqual" secondItem="3oI-oc-tZl" secondAttribute="width" id="72w-Rj-ZsG"/>
-                                            <constraint firstItem="87K-rx-NAD" firstAttribute="centerX" secondItem="7WP-hu-kSx" secondAttribute="centerX" id="Hkc-by-srP"/>
-                                            <constraint firstItem="xeC-Th-hX7" firstAttribute="centerX" secondItem="7WP-hu-kSx" secondAttribute="centerX" id="VzG-6K-jFf"/>
-                                            <constraint firstItem="87K-rx-NAD" firstAttribute="width" secondItem="7WP-hu-kSx" secondAttribute="width" multiplier="0.8" id="XKb-Zx-5vt"/>
-                                            <constraint firstItem="7WP-hu-kSx" firstAttribute="centerY" secondItem="3oI-oc-tZl" secondAttribute="centerY" id="cfL-Jr-lba"/>
-                                            <constraint firstItem="7WP-hu-kSx" firstAttribute="bottom" secondItem="xeC-Th-hX7" secondAttribute="bottom" constant="32" id="gOF-L7-1AE"/>
-                                            <constraint firstItem="87K-rx-NAD" firstAttribute="top" secondItem="7WP-hu-kSx" secondAttribute="top" constant="32" id="oN0-wB-YtB"/>
-                                            <constraint firstItem="xeC-Th-hX7" firstAttribute="width" secondItem="7WP-hu-kSx" secondAttribute="width" multiplier="0.8" id="s5h-g8-ZS2"/>
-                                            <constraint firstItem="7WP-hu-kSx" firstAttribute="height" relation="lessThanOrEqual" secondItem="3oI-oc-tZl" secondAttribute="height" id="tXP-2u-UxD"/>
+                                            <constraint firstItem="3oI-oc-tZl" firstAttribute="centerX" secondItem="ZsC-Mq-Caj" secondAttribute="centerX" id="T1Q-rE-wiJ"/>
+                                            <constraint firstItem="3oI-oc-tZl" firstAttribute="height" relation="lessThanOrEqual" secondItem="ZsC-Mq-Caj" secondAttribute="height" id="d5H-kT-u48"/>
+                                            <constraint firstItem="3oI-oc-tZl" firstAttribute="width" relation="lessThanOrEqual" secondItem="ZsC-Mq-Caj" secondAttribute="width" id="dhy-iN-f8L"/>
+                                            <constraint firstItem="3oI-oc-tZl" firstAttribute="centerY" secondItem="ZsC-Mq-Caj" secondAttribute="centerY" id="y0j-jt-IPq"/>
                                         </constraints>
                                     </view>
                                     <toolbar autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sLp-bb-rW3">
@@ -103,6 +115,7 @@
                             <constraint firstAttribute="trailing" secondItem="Okp-iX-XbU" secondAttribute="trailing" id="iuu-NY-EzL"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="GIP-Q1-1W6">
                         <barButtonItem key="leftBarButtonItem" systemItem="action" id="2lB-Kj-26c">
                             <color key="tintColor" red="0.55686277149999996" green="0.78823530669999997" blue="0.92156863209999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -131,6 +144,7 @@
                         <outlet property="bottomToolbar" destination="sLp-bb-rW3" id="zzD-hH-Jh7"/>
                         <outlet property="cameraButton" destination="cdf-MH-cpF" id="fh8-qH-ejk"/>
                         <outlet property="cancelButton" destination="Bmf-2f-U05" id="e0V-za-vKs"/>
+                        <outlet property="containerView" destination="ZsC-Mq-Caj" id="N7i-01-VMz"/>
                         <outlet property="imageView" destination="7WP-hu-kSx" id="4bl-Kh-Xpo"/>
                         <outlet property="memeView" destination="3oI-oc-tZl" id="XvI-08-ADl"/>
                         <outlet property="nightModeToggleButton" destination="XBl-FD-0je" id="hWF-ax-5fj"/>
@@ -140,7 +154,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2996.8000000000002" y="723.23838080959524"/>
+            <point key="canvasLocation" x="3517" y="583"/>
         </scene>
         <!--Saved Memes Table-->
         <scene sceneID="drI-7n-Nn9">
@@ -253,7 +267,7 @@
                     <tabBarItem key="tabBarItem" title="" image="collection" id="g9D-E2-lqU">
                         <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="-7"/>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Lnw-EM-apJ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Lnw-EM-apJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -346,8 +360,8 @@
         <!--Navigation Controller-->
         <scene sceneID="vR3-kf-HZM">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="V9e-Df-v29" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="createMemeNav" automaticallyAdjustsScrollViewInsets="NO" id="GD6-q6-IVS" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <toolbarItems/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="414" height="736"/>
@@ -360,14 +374,14 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="j6C-rl-QZc"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V9e-Df-v29" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2261" y="724"/>
+            <point key="canvasLocation" x="2576" y="583"/>
         </scene>
     </scenes>
     <resources>
         <image name="collection" width="30" height="30"/>
         <image name="cooper_bone" width="2016" height="1512"/>
-        <image name="default_image" width="1242" height="2208"/>
         <image name="sun_icon" width="33" height="33"/>
         <image name="table" width="30" height="30"/>
     </resources>

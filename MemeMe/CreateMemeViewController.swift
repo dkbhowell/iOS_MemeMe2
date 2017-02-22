@@ -23,8 +23,10 @@ class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var albumButton: UIBarButtonItem!
     
     @IBOutlet weak var memeView: UIView!
-    
-    
+    @IBOutlet weak var containerView: UIView!
+
+    var rootFrameY: CGFloat = 0
+
     // Properties
     var nightMode = true
     
@@ -56,13 +58,23 @@ class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegat
         bottomMemeText.textAlignment = .center
         
         navigationController?.navigationBar.barTintColor = nightMode ? darkBarColor : darkIconColor
+
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        print("CreateMemeController ViewWillAppear")
         super.viewWillAppear(animated)
         subscribeToKeyboardNotifications()
     }
-    
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        rootFrameY = view.frame.origin.y
+        print("rootFrameY is : \(rootFrameY)")
+    }
+
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         unsubscribeToKeyboardNotifications()
@@ -169,11 +181,16 @@ class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     func keyboardWillShow(_ notification: Notification) {
-        view.frame.origin.y = 0 - getKeyboardHeight(notification)
+        print("keyboard will show")
+        rootFrameY = view.frame.origin.y
+        let newY = rootFrameY - getKeyboardHeight(notification)
+        print("newY is : \(newY)")
+        view.frame.origin.y = newY
     }
     
     func keyboardWillHide(_ notification: Notification) {
-        view.frame.origin.y = 0
+        print("kebyoard will hide")
+        view.frame.origin.y = rootFrameY
     }
     
     func getKeyboardHeight(_ notification: Notification) -> CGFloat {
@@ -190,34 +207,16 @@ class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegat
     // MARK: Utility Functions
     
     func generateMemedImage() -> UIImage {
-        let originalSize = self.imageView.frame.size
-        let originalFrame = self.imageView.frame
-
-        let newFrame = CGRect(x: 0, y: 0, width: 400, height: 300)
-        let smallFrame = CGRect(x: 0, y: 0, width: 200, height: 150)
-
-        print("ImageView Frame (before): \(imageView.frame)")
-
-        // hide toolbar on bottom
-        bottomToolbar.isHidden = true
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
-        
         // debug log
-        print("imageView Frame (after): \(imageView.frame)")
-        
-        // capture the memed image
-        print("Original Frame: \(originalFrame)")
+        print("ImageView Frame: \(imageView.frame)")
+        print("MemeView Frame: \(memeView.frame)")
 
         UIGraphicsBeginImageContext(memeView.frame.size)
-        view.drawHierarchy(in: memeView.frame, afterScreenUpdates: true)
+        memeView.drawHierarchy(in: memeView.bounds, afterScreenUpdates: true)
 
         let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-        print("Image Size: \(memedImage.size)")
         UIGraphicsEndImageContext()
-        
-        // show toolbar
-        bottomToolbar.isHidden = false
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
+
         return memedImage
     }
 }
