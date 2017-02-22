@@ -22,6 +22,7 @@ class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var albumButton: UIBarButtonItem!
     
+    @IBOutlet weak var containerView: UIView!
     
     // Properties
     var nightMode = true
@@ -102,6 +103,7 @@ class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     @IBAction func toggleNightMode(_ sender: UIBarButtonItem) {
+        bottomToolbar.isHidden = !bottomToolbar.isHidden
         nightMode = !nightMode
         let barColor: UIColor
         let iconColor: UIColor
@@ -187,14 +189,29 @@ class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegat
     // MARK: Utility Functions
     
     func generateMemedImage() -> UIImage {
+        let originalSize = self.imageView.frame.size
+        let originalFrame = self.imageView.frame
+
+        let newFrame = CGRect(x: 0, y: 0, width: 400, height: 300)
+        let smallFrame = CGRect(x: 0, y: 0, width: 200, height: 150)
+
+        print("ImageView Frame (before): \(imageView.frame)")
+
         // hide toolbar on bottom
         bottomToolbar.isHidden = true
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         
+        // debug log
+        print("imageView Frame (after): \(imageView.frame)")
+        
         // capture the memed image
-        UIGraphicsBeginImageContext(self.view.frame.size)
-        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        print("Original Frame: \(originalFrame)")
+
+        UIGraphicsBeginImageContext(newFrame.size)
+        view.drawHierarchy(in: newFrame, afterScreenUpdates: true)
+
         let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        print("Image Size: \(memedImage.size)")
         UIGraphicsEndImageContext()
         
         // show toolbar

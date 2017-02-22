@@ -13,6 +13,7 @@ class MemeTableViewController: UITableViewController {
     var memes = [Meme]()
 
     override func viewDidLoad() {
+
         print("TableView viewDidLoad")
         super.viewDidLoad()
         
