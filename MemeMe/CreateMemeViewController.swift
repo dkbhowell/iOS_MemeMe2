@@ -22,7 +22,8 @@ class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var albumButton: UIBarButtonItem!
     
-    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var memeView: UIView!
+    
     
     // Properties
     var nightMode = true
@@ -207,8 +208,8 @@ class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegat
         // capture the memed image
         print("Original Frame: \(originalFrame)")
 
-        UIGraphicsBeginImageContext(newFrame.size)
-        view.drawHierarchy(in: newFrame, afterScreenUpdates: true)
+        UIGraphicsBeginImageContext(memeView.frame.size)
+        view.drawHierarchy(in: memeView.frame, afterScreenUpdates: true)
 
         let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         print("Image Size: \(memedImage.size)")

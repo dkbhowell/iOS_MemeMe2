@@ -6,8 +6,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MemeMe/Base.lproj/Main.storyboard" afterPath="$PROJECT_DIR$/MemeMe/Base.lproj/Main.storyboard" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MemeMe/CreateMemeViewController.swift" afterPath="$PROJECT_DIR$/MemeMe/CreateMemeViewController.swift" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MemeMe/MemeCollectionViewController.swift" afterPath="$PROJECT_DIR$/MemeMe/MemeCollectionViewController.swift" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MemeMe/MemeTableViewController.swift" afterPath="$PROJECT_DIR$/MemeMe/MemeTableViewController.swift" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -35,8 +33,8 @@
       <file leaf-file-name="CreateMemeViewController.swift" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/MemeMe/CreateMemeViewController.swift">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="721">
-              <caret line="194" column="65" lean-forward="false" selection-start-line="194" selection-start-column="65" selection-end-line="194" selection-end-column="65" />
+            <state relative-caret-position="736">
+              <caret line="195" column="65" lean-forward="false" selection-start-line="195" selection-start-column="65" selection-end-line="195" selection-end-column="65" />
               <folding />
             </state>
           </provider>
@@ -158,12 +156,12 @@
       <workItem from="1487620186063" duration="421000" />
       <workItem from="1487620618221" duration="1077000" />
       <workItem from="1487643345098" duration="829000" />
-      <workItem from="1487707288390" duration="4565000" />
+      <workItem from="1487707288390" duration="4839000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6892000" />
+    <option name="totallyTimeSpent" value="7166000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="852" y="22" width="1703" height="1418" extended-state="0" />
@@ -267,8 +265,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/MemeMe/CreateMemeViewController.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="721">
-          <caret line="194" column="65" lean-forward="false" selection-start-line="194" selection-start-column="65" selection-end-line="194" selection-end-column="65" />
+        <state relative-caret-position="736">
+          <caret line="195" column="65" lean-forward="false" selection-start-line="195" selection-start-column="65" selection-end-line="195" selection-end-column="65" />
           <folding />
         </state>
       </provider>
