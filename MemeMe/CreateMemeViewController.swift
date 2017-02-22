@@ -26,6 +26,7 @@ class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var containerView: UIView!
 
     var rootFrameY: CGFloat = 0
+    var keyboardShow = false
 
     // Properties
     var nightMode = true
@@ -182,15 +183,22 @@ class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegat
     
     func keyboardWillShow(_ notification: Notification) {
         print("keyboard will show")
-        rootFrameY = view.frame.origin.y
-        let newY = rootFrameY - getKeyboardHeight(notification)
-        print("newY is : \(newY)")
-        view.frame.origin.y = newY
+        if keyboardShow == false {
+            rootFrameY = view.frame.origin.y
+            let newY = rootFrameY - getKeyboardHeight(notification)
+            print("newY is : \(newY)")
+            view.frame.origin.y = newY
+        }
+
+        keyboardShow = true
     }
     
     func keyboardWillHide(_ notification: Notification) {
         print("kebyoard will hide")
-        view.frame.origin.y = rootFrameY
+        if keyboardShow == true {
+            view.frame.origin.y = rootFrameY
+        }
+        keyboardShow = false
     }
     
     func getKeyboardHeight(_ notification: Notification) -> CGFloat {
