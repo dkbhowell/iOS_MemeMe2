@@ -15,21 +15,18 @@ class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var topMemeText: UITextField!
     @IBOutlet weak var bottomMemeText: UITextField!
     @IBOutlet weak var bottomToolbar: UIToolbar!
-    
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var nightModeToggleButton: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var albumButton: UIBarButtonItem!
-    
     @IBOutlet weak var memeView: UIView!
     @IBOutlet weak var containerView: UIView!
 
+    // MARK: Properties
+    var nightMode = true
     var rootFrameY: CGFloat = 0
     var keyboardShow = false
-
-    // Properties
-    var nightMode = true
     
     // Colors (for night mode implementation)
     let darkBarColor = UIColor(colorLiteralRed: 56/255, green: 68/255, blue: 79/255, alpha: 1)
@@ -42,25 +39,21 @@ class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegat
         NSStrokeWidthAttributeName: -3.0
     ]
 
+    // MARK: Lifecycle Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Disable camera button if device does not have a camera
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
-        
-        // setup delegates
         topMemeText.delegate = self
         bottomMemeText.delegate = self
-        
         // setup font styles
         topMemeText.defaultTextAttributes = memeTextAttributes
         bottomMemeText.defaultTextAttributes = memeTextAttributes
         topMemeText.textAlignment = .center
         bottomMemeText.textAlignment = .center
-        
+        // choose color scheme
         navigationController?.navigationBar.barTintColor = nightMode ? darkBarColor : darkIconColor
-
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -104,20 +97,12 @@ class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegat
             activity, success, items, error in
             let meme = Meme(topText: self.topMemeText.text!, bottomText: self.bottomMemeText.text!, originalImage: self.imageView.image!, memedImage: memeImage)
             (UIApplication.shared.delegate as! AppDelegate).memes.append(meme)
-            print("Meme Added to Model")
-            self.dismiss(animated: true) {
-                print("dismiss handler of shareController")
-//                self.viewWillAppear(true)
-            }
+            self.dismiss(animated: true)
         }
-        self.present(shareController, animated: true) {
-            print("completion handler of present method")
-//            self.viewWillAppear(true)
-        }
+        self.present(shareController, animated: true)
     }
     
     @IBAction func toggleNightMode(_ sender: UIBarButtonItem) {
-//        bottomToolbar.isHidden = !bottomToolbar.isHidden
         nightMode = !nightMode
         let barColor: UIColor
         let iconColor: UIColor
@@ -171,7 +156,7 @@ class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegat
         return true
     }
     
-    // Notification methods
+    // MARK: Notification methods
     func subscribeToKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
@@ -215,16 +200,10 @@ class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegat
     // MARK: Utility Functions
     
     func generateMemedImage() -> UIImage {
-        // debug log
-        print("ImageView Frame: \(imageView.frame)")
-        print("MemeView Frame: \(memeView.frame)")
-
         UIGraphicsBeginImageContext(memeView.frame.size)
         memeView.drawHierarchy(in: memeView.bounds, afterScreenUpdates: true)
-
         let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
-
         return memedImage
     }
 }

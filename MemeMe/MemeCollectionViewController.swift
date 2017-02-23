@@ -12,21 +12,21 @@ private let reuseIdentifier = "memeCollectionCell"
 
 class MemeCollectionViewController: UICollectionViewController {
     
+    // MARK: Outlets
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
+    // MARK: Properties
     var memes: [Meme] = [Meme]()
-    
     let layoutPadding: CGFloat = 5.0
     let minItemSize: CGFloat = 125
     let maxItemsPerRow: CGFloat = 10
     
+    // MARK: Lifecycle Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         memes = fetchSavedMemes()
-        
         setLayout(forSize: self.view.frame.size)
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,68 +39,60 @@ class MemeCollectionViewController: UICollectionViewController {
         // refresh data
         collectionView?.reloadData()
     }
-
-    private func fetchSavedMemes() -> [Meme] {
-        
-        return (UIApplication.shared.delegate as! AppDelegate).memes
-    }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         setLayout(forSize: size)
         setBackground(forSize: size)
     }
     
-    func setBackground(forSize size: CGSize) {
-        
-        // use default collection background if there are memes to display
-        if memes.count > 0 {
-            collectionView?.backgroundView = nil
-            return
-        }
-        
-        // Set default background if there are no memes to display
-        var image: UIImage
-        if size.width > size.height {
-            image = UIImage(named: "NoSavedMemes_horizontal")!
-        } else {
-            image = UIImage(named: "NoSavedMemes_vertical")!
-        }
-        
-        let imageView = UIImageView(image: image)
-        imageView.contentMode = .scaleAspectFill
-        collectionView?.backgroundView = imageView
-    }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-    // MARK: UICollectionViewDataSource
+    // MARK: CollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-
-
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return memes.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MemeCollectionViewCell
-        
         let memeForCell = memes[indexPath.row]
-    
-        // Configure the cell
         cell.memeImage.image = memeForCell.memedImage
-    
         return cell
+    }
+    
+    // MARK: UICollectionViewDelegate
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedMeme = memes[indexPath.row]
+        let detailController = self.storyboard?.instantiateViewController(withIdentifier: "memeDetailController") as! MemeDetailViewController
+        detailController.meme = selectedMeme
+        navigationController?.pushViewController(detailController, animated: true)
+    }
+    
+    // MARK: Helper Functions
+    
+    private func fetchSavedMemes() -> [Meme] {
+        return (UIApplication.shared.delegate as! AppDelegate).memes
+    }
+    
+    func setBackground(forSize size: CGSize) {
+        // use default collection background if there are memes to display
+        if memes.count > 0 {
+            collectionView?.backgroundView = nil
+            return
+        }
+        // Set 'no memes' image if there are no memes to display
+        var image: UIImage
+        if size.width > size.height {
+            image = UIImage(named: "NoSavedMemes_horizontal")!
+        } else {
+            image = UIImage(named: "NoSavedMemes_vertical")!
+        }
+        let imageView = UIImageView(image: image)
+        imageView.contentMode = .scaleAspectFill
+        collectionView?.backgroundView = imageView
     }
     
     func setLayout(forSize size: CGSize) {
@@ -113,53 +105,10 @@ class MemeCollectionViewController: UICollectionViewController {
     func getItemDimensions(forContainerSize size: CGSize, spacing: CGFloat, minDimensSize: CGFloat) -> CGSize {
         var itemsPerRow: CGFloat = CGFloat(maxItemsPerRow)
         let containerWidth = size.width
-        
         while (containerWidth - (itemsPerRow - 1) * spacing) / itemsPerRow < minDimensSize {
             itemsPerRow -= 1
         }
-        
         let dimens = (containerWidth - (itemsPerRow - 1) * spacing) / itemsPerRow
         return CGSize(width: dimens, height: dimens)
     }
-
-    // MARK: UICollectionViewDelegate
-    
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedMeme = memes[indexPath.row]
-        
-        let detailController = self.storyboard?.instantiateViewController(withIdentifier: "memeDetailController") as! MemeDetailViewController
-        detailController.meme = selectedMeme
-        
-        navigationController?.pushViewController(detailController, animated: true)
-    }
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
-
 }
