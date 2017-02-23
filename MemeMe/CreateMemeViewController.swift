@@ -117,7 +117,7 @@ class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     @IBAction func toggleNightMode(_ sender: UIBarButtonItem) {
-        bottomToolbar.isHidden = !bottomToolbar.isHidden
+//        bottomToolbar.isHidden = !bottomToolbar.isHidden
         nightMode = !nightMode
         let barColor: UIColor
         let iconColor: UIColor

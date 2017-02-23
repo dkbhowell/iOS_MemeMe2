@@ -17,7 +17,7 @@ class MemeCollectionViewController: UICollectionViewController {
     var memes: [Meme] = [Meme]()
     
     let layoutPadding: CGFloat = 5.0
-    let minItemSize: CGFloat = 150
+    let minItemSize: CGFloat = 125
     let maxItemsPerRow: CGFloat = 10
     
     override func viewDidLoad() {

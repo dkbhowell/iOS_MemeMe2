@@ -207,10 +207,10 @@
             </objects>
             <point key="canvasLocation" x="1325" y="898"/>
         </scene>
-        <!--Meme Detail Controller-->
+        <!--Meme Details-->
         <scene sceneID="WTx-Kl-3UL">
             <objects>
-                <viewController storyboardIdentifier="memeDetailController" title="Meme Detail Controller" hidesBottomBarWhenPushed="YES" id="eVT-hW-Tbc" customClass="MemeDetailViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="memeDetailController" title="Meme Details" hidesBottomBarWhenPushed="YES" id="eVT-hW-Tbc" customClass="MemeDetailViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ffq-jc-kN4"/>
                         <viewControllerLayoutGuide type="bottom" id="xoX-Gi-hXF"/>
@@ -301,12 +301,11 @@
                                     <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cooper_bone" translatesAutoresizingMaskIntoConstraints="NO" id="F9N-y3-JlI">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cooper_bone" translatesAutoresizingMaskIntoConstraints="NO" id="F9N-y3-JlI">
                                             <rect key="frame" x="8" y="8" width="84" height="84"/>
                                         </imageView>
                                     </subviews>
                                 </view>
-                                <color key="backgroundColor" red="1" green="0.63529411759999999" blue="0.2274509804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="topMargin" secondItem="F9N-y3-JlI" secondAttribute="top" id="Dxe-UO-AIL"/>
                                     <constraint firstAttribute="bottomMargin" secondItem="F9N-y3-JlI" secondAttribute="bottom" id="E0t-Uh-feK"/>
