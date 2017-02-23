@@ -23,9 +23,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>We use your camera bro</string>
+	<string>We use your camera to capture meme images</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>We use your photos bro</string>
+	<string>We use your photos to create memes</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
