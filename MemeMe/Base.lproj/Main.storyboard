@@ -34,7 +34,7 @@
                                             <view contentMode="scaleToFill" horizontalHuggingPriority="400" verticalHuggingPriority="400" translatesAutoresizingMaskIntoConstraints="NO" id="3oI-oc-tZl" userLabel="Meme View">
                                                 <rect key="frame" x="0.0" y="40" width="414" height="552"/>
                                                 <subviews>
-                                                    <imageView verifyAmbiguity="ignoreSizes" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cooper_bone" translatesAutoresizingMaskIntoConstraints="NO" id="7WP-hu-kSx">
+                                                    <imageView verifyAmbiguity="ignoreSizes" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_image" translatesAutoresizingMaskIntoConstraints="NO" id="7WP-hu-kSx">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="552"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" secondItem="7WP-hu-kSx" secondAttribute="height" multiplier="3:4" id="CLG-QJ-ibr"/>
@@ -399,6 +399,7 @@
     <resources>
         <image name="collection" width="30" height="30"/>
         <image name="cooper_bone" width="2016" height="1512"/>
+        <image name="default_image" width="1242" height="2208"/>
         <image name="sun_icon" width="33" height="33"/>
         <image name="table" width="30" height="30"/>
     </resources>

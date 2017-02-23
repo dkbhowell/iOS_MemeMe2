@@ -30,20 +30,36 @@ class MemeTableViewController: UITableViewController {
         print("TableView viewWillAppear")
         memes = fetchSavedMemes()
         
-        if memes.count == 0 {
-            // Set background of Table View to stock image and hide separators
-            print("Saved Meme Count is 0")
-            let image = UIImage(named: "NoSavedMemes")
-            let imageView = UIImageView(image: image)
-            tableView.backgroundView = imageView
-            tableView.separatorColor = UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 0)
-        } else {
-            // Restore Defaults??
-            tableView.backgroundView = nil
-            tableView.separatorColor = nil
-        }
+        setBackground(forSize: view.frame.size)
         
         tableView.reloadData()
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        setBackground(forSize: size)
+    }
+    
+    func setBackground(forSize size: CGSize) {
+        
+        // use default table background if there are memes to display
+        if memes.count > 0 {
+            tableView.backgroundView = nil
+            tableView.separatorColor = nil
+            return
+        }
+        
+        // Set default background if there are no memes to display
+        var image: UIImage
+        if size.width > size.height {
+            image = UIImage(named: "NoSavedMemes_horizontal")!
+        } else {
+            image = UIImage(named: "NoSavedMemes_vertical")!
+        }
+        
+        let imageView = UIImageView(image: image)
+        imageView.contentMode = .scaleAspectFill
+        tableView.backgroundView = imageView
+        tableView.separatorColor = UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 0)
     }
 
     override func didReceiveMemoryWarning() {

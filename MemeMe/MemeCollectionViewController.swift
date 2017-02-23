@@ -34,14 +34,7 @@ class MemeCollectionViewController: UICollectionViewController {
         memes = fetchSavedMemes()
         
         // Add Custom Background if there are no memes to display
-        if memes.count == 0 {
-            let image = UIImage(named: "NoSavedMemes")
-            let imageView = UIImageView(image: image)
-            collectionView?.backgroundView = imageView
-        } else {
-            // restore background default?
-            collectionView?.backgroundView = nil
-        }
+        setBackground(forSize: view.frame.size)
         
         // refresh data
         collectionView?.reloadData()
@@ -54,6 +47,28 @@ class MemeCollectionViewController: UICollectionViewController {
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         setLayout(forSize: size)
+        setBackground(forSize: size)
+    }
+    
+    func setBackground(forSize size: CGSize) {
+        
+        // use default collection background if there are memes to display
+        if memes.count > 0 {
+            collectionView?.backgroundView = nil
+            return
+        }
+        
+        // Set default background if there are no memes to display
+        var image: UIImage
+        if size.width > size.height {
+            image = UIImage(named: "NoSavedMemes_horizontal")!
+        } else {
+            image = UIImage(named: "NoSavedMemes_vertical")!
+        }
+        
+        let imageView = UIImageView(image: image)
+        imageView.contentMode = .scaleAspectFill
+        collectionView?.backgroundView = imageView
     }
 
     /*
