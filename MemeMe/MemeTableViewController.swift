@@ -67,13 +67,13 @@ class MemeTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "memeTableCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "memeTableCell", for: indexPath) as! MemeTableViewCell
 
         let meme = memes[indexPath.row]
         
-        cell.imageView?.image = meme.memedImage
-        cell.textLabel?.text = meme.topText
-        cell.detailTextLabel?.text = meme.bottomText
+        cell.memeImage.image = meme.memedImage
+        cell.topText.text = meme.topText
+        cell.bottomText.text = meme.bottomText
 
         return cell
     }
