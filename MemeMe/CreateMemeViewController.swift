@@ -43,13 +43,10 @@ class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Disable camera button if device does not have a camera
-        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
-        topMemeText.delegate = self
-        bottomMemeText.delegate = self
+        shareButton.isEnabled = false
         // setup font styles
-        topMemeText.defaultTextAttributes = memeTextAttributes
-        bottomMemeText.defaultTextAttributes = memeTextAttributes
+        topMemeText.configure(delegate: self, defaultAttributes: memeTextAttributes)
+        bottomMemeText.configure(delegate: self, defaultAttributes: memeTextAttributes)
         topMemeText.textAlignment = .center
         bottomMemeText.textAlignment = .center
         // choose color scheme
@@ -57,8 +54,9 @@ class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("CreateMemeController ViewWillAppear")
         super.viewWillAppear(animated)
+        print("CreateMemeController ViewWillAppear")
+        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         subscribeToKeyboardNotifications()
     }
 
@@ -77,17 +75,11 @@ class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegat
     
     // MARK: Actions
     @IBAction func pickImage(_ sender: UIBarButtonItem) {
-        let pickerController = UIImagePickerController()
-        pickerController.delegate = self
-        pickerController.sourceType = .photoLibrary
-        self.present(pickerController, animated: true, completion: nil)
+        pickImageFromSource(sourceType: .photoLibrary)
     }
     
     @IBAction func takePicture(_ sender: UIBarButtonItem) {
-        let pickerController = UIImagePickerController()
-        pickerController.delegate = self
-        pickerController.sourceType = .camera
-        self.present(pickerController, animated: true, completion: nil)
+        pickImageFromSource(sourceType: .camera)
     }
     
     @IBAction func shareMeme(_ sender: UIBarButtonItem) {
@@ -161,6 +153,7 @@ class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegat
     
     func unsubscribeToKeyboardNotifications() {
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow , object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
     }
     
     func keyboardWillShow(_ notification: Notification) {
@@ -195,13 +188,19 @@ class CreateMemeViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     // MARK: Utility Functions
-    
-    func generateMemedImage() -> UIImage {
+    private func generateMemedImage() -> UIImage {
         UIGraphicsBeginImageContext(memeView.frame.size)
         memeView.drawHierarchy(in: memeView.bounds, afterScreenUpdates: true)
         let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         return memedImage
+    }
+    
+    private func pickImageFromSource(sourceType: UIImagePickerControllerSourceType) {
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        pickerController.sourceType = sourceType
+        self.present(pickerController, animated: true, completion: { self.shareButton.isEnabled = true })
     }
 }
 
